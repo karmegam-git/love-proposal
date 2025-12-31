@@ -112,3 +112,21 @@ function accept() {
 
   animate();
 })();
+
+/*************************************************
+ * 🎵 PLAY MUSIC ON FIRST USER INTERACTION
+ *************************************************/
+(function enableMusicOnClick() {
+  const music = document.getElementById("bgMusic");
+  if (!music) return;
+
+  function playMusic() {
+    music.volume = 0.4;
+    music.play().catch(() => {});
+    document.removeEventListener("click", playMusic);
+    document.removeEventListener("touchstart", playMusic);
+  }
+
+  document.addEventListener("click", playMusic);
+  document.addEventListener("touchstart", playMusic);
+})();
