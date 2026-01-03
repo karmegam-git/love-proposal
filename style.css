@@ -14,8 +14,10 @@ body {
 /* SKY BLUE DREAMY BACKGROUND */
 .bg {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
   background:
     linear-gradient(
       180deg,
@@ -23,16 +25,40 @@ body {
       rgba(120, 190, 235, 0.85)
     ),
     url("assets/her.jpg") center/cover no-repeat;
-  filter: blur(6px);
-  z-index: -2;
+  filter: blur(3px) brightness(0.95);
+  z-index: -3;
+  animation: slowZoom 40s ease-in-out infinite;
 }
 
-/* PARTICLE CANVAS */
-canvas {
+/* MOVING LIGHT OVERLAY */
+.light-overlay {
   position: fixed;
-  inset: 0;
+  inset: -20%;
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.12),
+      transparent 60%
+    );
+  animation: lightDrift 25s linear infinite;
+  pointer-events: none;
   z-index: -1;
 }
+
+@keyframes lightDrift {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(10%, 8%); }
+  100% { transform: translate(0, 0); }
+}
+
+
+/* VERY SLOW CINEMATIC ZOOM */
+@keyframes slowZoom {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 
 /* SECTION STYLE */
 .section {
@@ -158,3 +184,4 @@ button:hover {
     padding: 12px 30px;
   }
 }
+
